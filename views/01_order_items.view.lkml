@@ -179,7 +179,7 @@ view: order_items {
 
   dimension_group: created {
     type: time
-    timeframes: [time, hour, date, week, month, year, hour_of_day, day_of_week, month_num, raw, week_of_year,month_name]
+    timeframes: [time, hour, date, week, month,month_name, year, hour_of_day, day_of_week, month_num, raw, week_of_year,month_name]
     sql: ${TABLE}.created_at ;;
     #order_by_field: created_month_num
   }
@@ -191,12 +191,12 @@ view: order_items {
         AND ${created_raw} < CURRENT_TIMESTAMP()
         THEN 'This Year to Date'
 
-        WHEN EXTRACT(YEAR from ${created_raw}) + 1 = EXTRACT(YEAR from CURRENT_TIMESTAMP())
-        AND CAST(FORMAT_TIMESTAMP('%j', ${created_raw}) AS INT64) <= CAST(FORMAT_TIMESTAMP('%j', CURRENT_TIMESTAMP()) AS INT64)
-        THEN 'Last Year to Date'
+      WHEN EXTRACT(YEAR from ${created_raw}) + 1 = EXTRACT(YEAR from CURRENT_TIMESTAMP())
+      AND CAST(FORMAT_TIMESTAMP('%j', ${created_raw}) AS INT64) <= CAST(FORMAT_TIMESTAMP('%j', CURRENT_TIMESTAMP()) AS INT64)
+      THEN 'Last Year to Date'
 
       END
-       ;;
+      ;;
   }
 
   dimension: days_since_sold {
@@ -255,9 +255,9 @@ view: order_items {
 ########## Financial Information ##########
 
   dimension: sale_price {
-    label: "Sale Price"
+    label: "Sale"
     type: number
-    value_format_name: usd
+    value_format_name: 0
     sql: ${TABLE}.sale_price;;
   }
 
@@ -287,7 +287,7 @@ view: order_items {
     label: "Total Sale Price"
     type: sum
     value_format_name: usd
-    sql: ${sale_price} ;;
+    sql: ${sale_price}*-1;;
     drill_fields: [detail*]
   }
 
