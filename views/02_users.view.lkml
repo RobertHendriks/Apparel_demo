@@ -247,7 +247,7 @@ view: users {
     sql: ${TABLE}.id ;;
     link: {
     label: "test2"
-    url: "/explore/thelook/order_items?fields=users.history, users.state"}
+    url: "/explore/thelook/order_items?fields=users.history, users.state&f[users.history]={{ value }}"}
   }
 
   dimension: traffic_source {
