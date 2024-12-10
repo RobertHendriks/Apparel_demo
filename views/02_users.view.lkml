@@ -245,7 +245,7 @@ view: users {
     label: "History"
     sql: ${TABLE}.id ;;
     link: {
-    label: "test"
+    label: "test1"
     url: "/explore/thelook_event/order_items?fields=order_items.detail&f[users.history]={{value}}&f[users.country]=USA"}
   }
 
