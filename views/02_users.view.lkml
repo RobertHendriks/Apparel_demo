@@ -243,6 +243,7 @@ view: users {
 
   dimension: history {
     label: "History"
+    type: number
     sql: ${TABLE}.id ;;
     link: {
     label: "test2"
