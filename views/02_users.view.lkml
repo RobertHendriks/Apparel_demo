@@ -245,8 +245,8 @@ view: users {
     label: "History"
     sql: ${TABLE}.id ;;
     link: {
-    label: "test1"
-    url: "/explore/thelook/order_items?fields=users.history&f[users.history]={{value}}&f[users.country]=USA"}
+    label: "test2"
+    url: "/explore/thelook/order_items?fields=users.history&f[users.history]={{value}}"}
   }
 
   dimension: traffic_source {
