@@ -243,11 +243,11 @@ view: users {
 
   dimension: history {
     label: "History"
-    type: string
+    type: number
     sql: ${TABLE}.id ;;
     link: {
     label: "test2"
-    url: "/explore/thelook/order_items?fields=users.history, users.state&f[users.history]={{ value }}"}
+    url: "/explore/thelook/order_items?fields=users.history, users.state"}
   }
 
   dimension: traffic_source {
