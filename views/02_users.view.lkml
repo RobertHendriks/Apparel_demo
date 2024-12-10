@@ -244,8 +244,9 @@ view: users {
   dimension: history {
     label: "History"
     sql: ${TABLE}.id ;;
-    html: <a href="/explore/thelook_event/order_items?fields=order_items.detail">Order History</a>
-      ;;
+    link: {
+    label: "test"
+    url: "/explore/thelook_event/order_items?fields=order_items.detail"}
   }
 
   dimension: traffic_source {
