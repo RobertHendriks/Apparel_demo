@@ -25,7 +25,7 @@ persist_with: ecommerce_etl_modified
 
 
 explore: order_items {
-  label: "(1) Orders, Items and Users"
+  label: "Apparel (1) Orders, Items and Users"
   view_name: order_items
 
   join: order_facts {
@@ -108,60 +108,60 @@ explore: order_items {
 
 #########  Event Data Explores #########
 
-explore: events {
-  label: "(2) Web Event Data"
-  # sql_always_where: ${product_viewed.brand} in ({{ _user_attributes['brand'] }}) ;;
+# explore: events {
+#   label: "Apparel (2) Web Event Data"
+#   # sql_always_where: ${product_viewed.brand} in ({{ _user_attributes['brand'] }}) ;;
 
-  join: sessions {
-    view_label: "Sessions"
-    type: left_outer
-    sql_on: ${events.session_id} =  ${sessions.session_id} ;;
-    relationship: many_to_one
-  }
+#   join: sessions {
+#     view_label: "Sessions"
+#     type: left_outer
+#     sql_on: ${events.session_id} =  ${sessions.session_id} ;;
+#     relationship: many_to_one
+#   }
 
-  join: session_landing_page {
-    view_label: "Session Landing Page"
-    from: events
-    type: left_outer
-    sql_on: ${sessions.landing_event_id} = ${session_landing_page.event_id} ;;
-    fields: [simple_page_info*]
-    relationship: one_to_one
-  }
+#   join: session_landing_page {
+#     view_label: "Session Landing Page"
+#     from: events
+#     type: left_outer
+#     sql_on: ${sessions.landing_event_id} = ${session_landing_page.event_id} ;;
+#     fields: [simple_page_info*]
+#     relationship: one_to_one
+#   }
 
-  join: session_bounce_page {
-    view_label: "Session Bounce Page"
-    from: events
-    type: left_outer
-    sql_on: ${sessions.bounce_event_id} = ${session_bounce_page.event_id} ;;
-    fields: [simple_page_info*]
-    relationship: many_to_one
-  }
+#   join: session_bounce_page {
+#     view_label: "Session Bounce Page"
+#     from: events
+#     type: left_outer
+#     sql_on: ${sessions.bounce_event_id} = ${session_bounce_page.event_id} ;;
+#     fields: [simple_page_info*]
+#     relationship: many_to_one
+#   }
 
-  join: product_viewed {
-    view_label: "Product Viewed"
-    from: products
-    type: left_outer
-    sql_on: ${events.viewed_product_id} = ${product_viewed.id} ;;
-    relationship: many_to_one
-  }
+#   join: product_viewed {
+#     view_label: "Product Viewed"
+#     from: products
+#     type: left_outer
+#     sql_on: ${events.viewed_product_id} = ${product_viewed.id} ;;
+#     relationship: many_to_one
+#   }
 
-  join: users {
-    view_label: "Users"
-    type: left_outer
-    sql_on: ${sessions.session_user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
+#   join: users {
+#     view_label: "Users"
+#     type: left_outer
+#     sql_on: ${sessions.session_user_id} = ${users.id} ;;
+#     relationship: many_to_one
+#   }
 
-  join: user_order_facts {
-    type: left_outer
-    sql_on: ${users.id} = ${user_order_facts.user_id} ;;
-    relationship: one_to_one
-    view_label: "Users"
-  }
-}
+#   join: user_order_facts {
+#     type: left_outer
+#     sql_on: ${users.id} = ${user_order_facts.user_id} ;;
+#     relationship: one_to_one
+#     view_label: "Users"
+#   }
+# }
 
 explore: sessions {
-  label: "(3) Web Session Data"
+  label: "Apparel (3) Web Session Data"
   # sql_always_where: ${product_viewed.brand} in ({{ _user_attributes['brand'] }}) ;;
 
   join: events {
@@ -215,42 +215,42 @@ explore: sessions {
 
 #########  Advanced Extensions #########
 
-explore: affinity {
-  label: "(4) Affinity Analysis"
+# explore: affinity {
+#   label: "(4) Affinity Analysis"
 
-  always_filter: {
-    filters: {
-      field: affinity.product_b_id
-      value: "-NULL"
-    }
-  }
+#   always_filter: {
+#     filters: {
+#       field: affinity.product_b_id
+#       value: "-NULL"
+#     }
+#   }
 
-  join: product_a {
-    from: products
-    type: left_outer
-    view_label: "Product A Details"
-    relationship: many_to_one
-    sql_on: ${affinity.product_a_id} = ${product_a.id} ;;
-  }
+#   join: product_a {
+#     from: products
+#     type: left_outer
+#     view_label: "Product A Details"
+#     relationship: many_to_one
+#     sql_on: ${affinity.product_a_id} = ${product_a.id} ;;
+#   }
 
-  join: product_b {
-    from: products
-    type: left_outer
-    view_label: "Product B Details"
-    relationship: many_to_one
-    sql_on: ${affinity.product_b_id} = ${product_b.id} ;;
-  }
-}
+#   join: product_b {
+#     from: products
+#     type: left_outer
+#     view_label: "Product B Details"
+#     relationship: many_to_one
+#     sql_on: ${affinity.product_b_id} = ${product_b.id} ;;
+#   }
+# }
 
-explore: orders_with_share_of_wallet_application {
-  label: "(5) Share of Wallet Analysis"
-  extends: [order_items]
-  view_name: order_items
+# explore: orders_with_share_of_wallet_application {
+#   label: "(5) Share of Wallet Analysis"
+#   extends: [order_items]
+#   view_name: order_items
 
-  join: order_items_share_of_wallet {
-    view_label: "Share of Wallet"
-  }
-}
+#   join: order_items_share_of_wallet {
+#     view_label: "Share of Wallet"
+#   }
+# }
 
 explore: journey_mapping {
   label: "(6) Customer Journey Mapping"
