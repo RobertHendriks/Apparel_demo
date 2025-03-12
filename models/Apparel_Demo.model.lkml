@@ -25,7 +25,7 @@ persist_with: ecommerce_etl_modified
 
 
 explore: order_items {
-  label: "Apparel (1) Orders, Items and Users"
+  label: "(1) Apparel Orders, Items and Users"
   view_name: order_items
 
   join: order_facts {
@@ -161,7 +161,7 @@ explore: order_items {
 # }
 
 explore: sessions {
-  label: "Apparel (3) Web Session Data"
+  label: "(3) Web Session Data"
   # sql_always_where: ${product_viewed.brand} in ({{ _user_attributes['brand'] }}) ;;
 
   join: events {
