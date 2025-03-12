@@ -1,4 +1,4 @@
-connection: "looker-private-demo"
+connection: "databeans_marketing"
 label: "eCommerce"
 include: "/queries/queries*.view" # includes all queries refinements
 include: "/views/**/*.view" # include all the views
