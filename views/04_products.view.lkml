@@ -22,6 +22,33 @@ view: products {
     drill_fields: [id]
   }
 
+  dimension: availability {
+    label: "Item Availability"
+    sql: 0 ;;
+    drill_fields: [department, brand, item_name]
+  }
+
+  # dimension: logo {
+  #   type: string
+  #   sql: ${TABLE}.logo ;;
+  #   html:
+  #   <span style="height:1rem; display:flex">
+  #       <div class="vis" style="position: absolute; width: 30px;height: auto; overflow: hidden; border-radius: 50%">
+  #         <img style="height:100%; width: 100%; object-fit:cover;" src="{{value}}"/>
+  #       </div>
+  #       <span style="margin-left:3.2rem;">{{ name._value }}</span>
+  #   </span>;;
+  # }
+
+  # dimension: img {
+  #   type: string
+  #   sql: ${TABLE}.logo ;;
+  #   html:<div style="position: fixed; width: 120px;height: auto; overflow: hidden; margin-left:auto;margin-right:auto; border-radius: 50%">
+  #         <a href="https://finance.yahoo.com/quote/{{ company_profile.ticker._value }}" target="_blank">
+  #         <img style="height:100%; width: 100%; object-fit:cover;" src="{{value}}"/>
+  #         </a>
+  #       </div>;;
+  # }
   dimension: brand {
     label: "Brand"
     sql: TRIM(${TABLE}.brand) ;;

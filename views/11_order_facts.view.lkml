@@ -36,6 +36,7 @@ view: order_facts {
     type: number
     value_format_name: usd
     sql: ${TABLE}.order_amount ;;
+    required_access_grants: [can_view_financial_data]
   }
 
   dimension: order_cost {
@@ -43,12 +44,14 @@ view: order_facts {
     type: number
     value_format_name: usd
     sql: ${TABLE}.order_cost ;;
+    required_access_grants: [can_view_financial_data]
   }
 
   dimension: order_gross_margin {
     label: "Order Gross Margin"
     type: number
     value_format_name: usd
+    required_access_grants: [can_view_financial_data]
   }
 
   dimension: order_sequence_number {

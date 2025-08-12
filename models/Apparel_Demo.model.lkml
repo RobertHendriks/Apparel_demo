@@ -23,6 +23,10 @@ datagroup: ecommerce_etl_modified {
 persist_with: ecommerce_etl_modified
 ############ Base Explores #############
 
+access_grant: can_view_financial_data {
+  user_attribute: persona
+  allowed_values: [ "finance" ]
+}
 
 explore: order_items {
   label: "(1) Apparel Orders, Items and Users"
