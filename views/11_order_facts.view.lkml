@@ -32,7 +32,7 @@ view: order_facts {
   }
 
   dimension: order_amount {
-    label: "Order Amount"
+    label: "Order Amount - only viewable by Finance team"
     type: number
     value_format_name: usd
     sql: ${TABLE}.order_amount ;;
@@ -40,7 +40,7 @@ view: order_facts {
   }
 
   dimension: order_cost {
-    label: "Order Cost"
+    label: "Order Cost - only viewable by Finance team"
     type: number
     value_format_name: usd
     sql: ${TABLE}.order_cost ;;
@@ -48,7 +48,7 @@ view: order_facts {
   }
 
   dimension: order_gross_margin {
-    label: "Order Gross Margin"
+    label: "Order Gross Margin - only viewable by Finance team"
     type: number
     value_format_name: usd
     required_access_grants: [can_view_financial_data]
